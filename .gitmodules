@@ -1,0 +1,3 @@
+[submodule "client/deps/djinni"]
+	path = client/deps/djinni
+	url = https://github.com/dropbox/djinni.git
