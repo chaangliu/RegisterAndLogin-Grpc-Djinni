@@ -1,0 +1,22 @@
+user = record {
+    id: i32;
+    username: string;
+    password: string;
+    auth: string;
+    deviceid: string;
+}
+
+reply = record {
+    resultcode: i32;
+    resultmsg: string;
+    isauthvalid: bool;
+    auth: string;
+}
+
+client = interface +c {
+    static create_with_path(path: string): client;
+    get_userinfo(username: string): user;
+    register(username: string, password: string, deviceid: string): ;
+    check_auth(username: string, auth: string);
+    login(username: string, password: string, deviceid: string);
+}

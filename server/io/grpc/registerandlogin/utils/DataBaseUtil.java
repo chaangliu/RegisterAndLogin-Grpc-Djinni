@@ -27,9 +27,9 @@ public class DataBaseUtil {
             PreparedStatement prst = connection.prepareStatement(sql);
             //结果集
             ResultSet rs = prst.executeQuery();
-            while (rs.next()) {
+//            while (rs.next()) {
 //                System.out.println("用户名:" + rs.getString("name"));
-            }
+//            }
             rs.close();
             prst.close();
             return rs.getString(key);
@@ -44,5 +44,10 @@ public class DataBaseUtil {
                 }
             }
         }
+    }
+
+    //todo 待实现
+    public static void add(String key){
+
     }
 }
