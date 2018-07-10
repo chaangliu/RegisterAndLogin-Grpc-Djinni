@@ -7,6 +7,9 @@
 - [NOTICE]由于初次接触，时间亦只有不到一周的业余时间，功能并未完全跑通，只是实现了一些关键逻辑，
 以及学习了两个框架的开发流程，作为参考。详见结尾「已知问题」。
 
+![process](https://github.com/LarryLawrence/https://github.com/LarryLawrence/RegisterAndLogin-Grpc-Djinni/blob/master/client/screenshots/general-process.png) 
+
+
 ### gRPC
 使用[Grpc-java](https://github.com/grpc/grpc-java)，在```.proto```文件中一次定义```service```，就可以实现任何```gRPC```支持的语言的客户端和服务端，
 于是就可以在包括Google服务器到你自己的平板电脑在内的环境上运行，在不同环境和不同语言之间进行通信的工作，都交给gPRC来搞定。由于采用了```protocol buffers```,同时也就
