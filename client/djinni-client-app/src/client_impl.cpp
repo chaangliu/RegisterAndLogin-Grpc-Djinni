@@ -19,12 +19,13 @@ using grpc::Status;
 using loginclient::CheckAuthRequest;
 using loginclient::LoginRequest;
 using loginclient::RegisterRequest;
+using loginclient::Reply;
 // using loginclient::CheckAuthReply;
 // using loginclient::LoginReply;
 // using loginclient::RegisterReply;
-  
+
 namespace client {
-    
+
     std::string _path;
     sqlite3 *db;
     char *zErrMsg = 0;
@@ -35,7 +36,7 @@ namespace client {
     std::shared_ptr<Client> Client::create_with_path(const std::string & path) {
         return std::make_shared<ClientImpl>(path);
     }
-    
+
     ClientImpl::ClientImpl(const std::string & path) {
         _path = path + "/userdata.db";
         _setup_db();
@@ -43,7 +44,7 @@ namespace client {
 
     //验证auth接口，进入App后登录之前先调用auth验证，判断是否需要重新登录(比如被挤掉或过期)
     std::Reply ClientImpl::check_auth(const std::string & username, string & auth) {
-        
+
         //把用户名和客户端存放的auth传递给server
         CheckAuthRequest request;
         request.set_name(username);
@@ -56,7 +57,7 @@ namespace client {
         ClientContext context;
 
         // RPC过程
-        Status status = stub_->CheckAuth(&context, request, &reply);
+        Status status = stub_->startCheckAuthRpc(&context, request, &reply);
 
         // 对status的操作
         if (status.ok()) {
@@ -122,7 +123,7 @@ namespace client {
 
         ClientContext context;
         // RPC请求
-        Status status = stub_->Login(&context, request, &reply);
+        Status status = stub_->startLoginRpc(&context, request, &reply);
 
         if (status.ok()) {
           //透传给app
@@ -145,12 +146,18 @@ namespace client {
     }
 
     std::Reply startRegisterRpc(ClientContext context, request, Reply reply) {
-          LoginClient loginclient(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
+          LoginClient loginclient(grpc::CreateChannel("localhost:50051", grpc::SslCredentials()));
           std::string reply = loginclient.register(context, request, reply);
+    }
 
-          auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
-          auto channel = grpc::CreateChannel("localhost:50051", creds);
-          std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
+    std::Reply startLoginRpc(ClientContext context, request, Reply reply) {
+          LoginClient loginclient(grpc::CreateChannel("localhost:50051", grpc::SslCredentials()));
+          std::string reply = loginclient.login(context, request, reply);
+    }
+
+    std::Reply startCheckAuthRpc(ClientContext context, request, Reply reply) {
+          LoginClient loginclient(grpc::CreateChannel("localhost:50051", grpc::SslCredentials()));
+          std::string reply = loginclient.check_auth(context, request, reply);
     }
   
     //获取用户信息，返回User实体

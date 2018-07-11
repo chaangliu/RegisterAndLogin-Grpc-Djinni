@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="6dp"
+    android:paddingRight="6dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chang.clientapp.LoginAndRegisterActivity">
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入用户名"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="125dp" />
+
+    <EditText
+        android:id="@+id/user_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入密码"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="191dp" />
+
+    <TextView
+        android:id="@+id/register_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="没有账号，去注册"
+        tools:layout_editor_absoluteX="283dp"
+        tools:layout_editor_absoluteY="265dp" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认登录"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="513dp" />
+
+</android.support.constraint.ConstraintLayout>

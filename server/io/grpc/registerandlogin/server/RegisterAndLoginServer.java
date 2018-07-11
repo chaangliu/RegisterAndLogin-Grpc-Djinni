@@ -30,6 +30,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
+import static io.grpc.registerandlogin.utils.DataBaseUtil.*;
+
 public class RegisterAndLoginServer {
     private static final Logger logger = Logger.getLogger(RegisterAndLoginServer.class.getName());
 
@@ -81,7 +83,8 @@ public class RegisterAndLoginServer {
     static class RegisterImpl extends RegisterGrpc.RegisterImplBase {
         /**
          * 注册
-         * @param req 请求实体
+         *
+         * @param req              请求实体
          * @param responseObserver 响应观察者
          */
         @Override
@@ -91,7 +94,7 @@ public class RegisterAndLoginServer {
             String userName = req.getUserName();
             String userPwd = req.getUserPwd();
             String deviceId = req.getDeviceId();
-            String queriedUserName = DataBaseUtil.query(userName);
+            String queriedUserName = DataBaseUtil.query(userName, COLUMN_USER_NAME);
             RegisterReply reply = null;
             if (queriedUserName != null) {
                 //userName已存在
@@ -114,14 +117,15 @@ public class RegisterAndLoginServer {
     static class CheckAuthImpl extends CheckAuthGrpc.CheckAuthImplBase {
         /**
          * 检查auth
-         * @param req 请求实体
+         *
+         * @param req              请求实体
          * @param responseObserver 响应观察者
          */
         @Override
         public void checkAuth(CheckAuthRequest req, StreamObserver<CheckAuthReply> responseObserver) {
             String userName = req.getUserName();
             String auth = req.getAuth();
-            String queriedAuth = DataBaseUtil.query(userName);
+            String queriedAuth = DataBaseUtil.query(userName, COLUMN_AUTH);
             CheckAuthReply reply;
             //用户名对应的auth
             if (!queriedAuth.equals(auth)) {
@@ -138,7 +142,8 @@ public class RegisterAndLoginServer {
     static class LoginImpl extends io.grpc.registerandlogin.grpc.LoginGrpc.LoginImplBase {
         /**
          * 登录
-         * @param req 请求实体
+         *
+         * @param req              请求实体
          * @param responseObserver 相应观察者
          */
         @Override
@@ -148,9 +153,9 @@ public class RegisterAndLoginServer {
             String userName = req.getUserName();
             String userPwd = req.getUserPwd();
             String deviceId = req.getDeviceId();
-            String queriedUserName = DataBaseUtil.query(userName);
-            String queriedDeviceId = DataBaseUtil.query(deviceId);
-            String queriedPwd = DataBaseUtil.query(userPwd);
+            String queriedUserName = DataBaseUtil.query(userName, COLUMN_PASSWORD);
+            //String queriedDeviceId = DataBaseUtil.query(userName, COLUMN_DEVICE_ID);
+            String queriedPwd = DataBaseUtil.query(userName, COLUMN_PASSWORD);
             LoginReply reply;
 
             if (queriedUserName == null || queriedUserName.length() == 0) {
@@ -173,6 +178,7 @@ public class RegisterAndLoginServer {
 
     /**
      * 生成auth
+     *
      * @param userName 用户名
      * @param deviceId 设备id
      * @return auth
