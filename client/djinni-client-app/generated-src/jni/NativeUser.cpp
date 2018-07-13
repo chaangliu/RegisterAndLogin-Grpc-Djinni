@@ -16,7 +16,7 @@ auto NativeUser::fromCpp(JNIEnv* jniEnv, const CppType& c) -> ::djinni::LocalRef
                                                            ::djinni::get(::djinni::I32::fromCpp(jniEnv, c.id)),
                                                            ::djinni::get(::djinni::String::fromCpp(jniEnv, c.username)),
                                                            ::djinni::get(::djinni::String::fromCpp(jniEnv, c.password)),
-                                                           ::djinni::get(::djinni::I32::fromCpp(jniEnv, c.auth)),
+                                                           ::djinni::get(::djinni::String::fromCpp(jniEnv, c.auth)),
                                                            ::djinni::get(::djinni::String::fromCpp(jniEnv, c.deviceid)))};
     ::djinni::jniExceptionCheck(jniEnv);
     return r;
@@ -29,7 +29,7 @@ auto NativeUser::toCpp(JNIEnv* jniEnv, JniType j) -> CppType {
     return {::djinni::I32::toCpp(jniEnv, jniEnv->GetIntField(j, data.field_mId)),
             ::djinni::String::toCpp(jniEnv, (jstring)jniEnv->GetObjectField(j, data.field_mUsername)),
             ::djinni::String::toCpp(jniEnv, (jstring)jniEnv->GetObjectField(j, data.field_mPassword)),
-            ::djinni::I32::toCpp(jniEnv, jniEnv->GetIntField(j, data.field_mAuth)),
+            ::djinni::String::toCpp(jniEnv, (jstring)jniEnv->GetObjectField(j, data.field_mAuth)),
             ::djinni::String::toCpp(jniEnv, (jstring)jniEnv->GetObjectField(j, data.field_mDeviceid))};
 }
 

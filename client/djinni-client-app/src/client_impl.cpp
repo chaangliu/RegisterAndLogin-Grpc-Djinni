@@ -1,28 +1,46 @@
-#include "todo_list_impl.hpp"
 #include <iostream>
-#include <string>
 #include <vector>
 #include <sqlite3.h>
 
-#include <memory>
 #include <grpcpp/grpcpp.h>
 
 #ifdef BAZEL_BUILD
-#include "examples/protos/loginclient.grpc.pb.h"
+#include "client/djinni-client-app/src/grpc/client.grpc.pb.h"
 #else
-#include "loginclient.grpc.pb.h"
+#include "client.grpc.pb.h"
+#include "client_impl.hpp"
+
 #endif
 
 using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
-using loginclient::CheckAuthRequest;
-using loginclient::LoginRequest;
-using loginclient::RegisterRequest;
-using loginclient::Reply;
-// using loginclient::CheckAuthReply;
-// using loginclient::LoginReply;
-// using loginclient::RegisterReply;
+using client::CheckAuthRequest;
+using client::LoginRequest;
+using client::RegisterRequest;
+using client::CheckAuthReply;
+using client::LoginReply;
+using client::RegisterReply;
+
+//---for reference only---
+//#include <iostream>
+//#include <memory>
+//#include <string>
+//
+//#include <grpcpp/grpcpp.h>
+//
+//#ifdef BAZEL_BUILD
+//#include "examples/protos/helloworld.grpc.pb.h"
+//#else
+//#include "helloworld.grpc.pb.h"
+//#endif
+//
+//using grpc::Channel;
+//using grpc::ClientContext;
+//using grpc::Status;
+//using helloworld::HelloRequest;
+//using helloworld::HelloReply;
+//using helloworld::Greeter;
 
 namespace client {
 
@@ -33,25 +51,25 @@ namespace client {
     std::string sql;
     sqlite3_stmt *statement;
     // LoginClient(std::shared_ptr<Channel> channel): stub_(Login::NewStub(channel)) {}
-    std::shared_ptr<Client> Client::create_with_path(const std::string & path) {
-        return std::make_shared<ClientImpl>(path);
-    }
+//    std::shared_ptr<ClientImpl> Client::create_with_path(const std::string & path) {
+//        return std::make_shared<ClientImpl>(path);
+//    }
 
-    ClientImpl::ClientImpl(const std::string & path) {
-        _path = path + "/userdata.db";
-        _setup_db();
-    }
+//    ClientImpl::ClientImpl(const std::string &path, std::string &deviceid) : deviceid(deviceid) {
+//        _path = path + "/userdata.db";
+//        _setup_db();
+//    }
 
     //验证auth接口，进入App后登录之前先调用auth验证，判断是否需要重新登录(比如被挤掉或过期)
-    std::Reply ClientImpl::check_auth(const std::string & username, string & auth) {
+    Reply ClientImpl::check_auth(std::string & username, std:: string & auth) {
 
         //把用户名和客户端存放的auth传递给server
         CheckAuthRequest request;
-        request.set_name(username);
+        request.set_username(username);
         request.set_auth(auth);
 
         //server返回的reply的container
-        std::Reply reply;
+        client:: Reply reply;
 
         //给client的context，可以用来传递额外信息给server或者调整特定的RPC行为
         ClientContext context;
@@ -73,19 +91,19 @@ namespace client {
             resultcode,
             resultmsg,
             isauthvalid
-          }
+          };
           return reply;
         }
     }
 
     //注册
-    std::Reply ClientImpl::register(const std::string& userName, string& userPwd, String& deviceId) {
+    Reply ClientImpl::register_account(const std::string& userName, string& userPwd, String& deviceId) {
         RegisterRequest request;
-        request.set_name(userName);
+        request.set_username(userName);
         request.set_pwd(userPwd);
         request.set_deviceId(deviceId);
 
-        std::Reply reply;
+        Reply reply;
 
         ClientContext context;
 
@@ -107,19 +125,19 @@ namespace client {
             resultmsg,
             isauthvalid,
             auth
-          }
+          };
           return reply;
         }
     }
 
     //登录
-    std::Reply ClientImpl::login(const std::string& userName, string& userPwd, String& deviceId) {
+    Reply ClientImpl::login(const std::string& userName, string& userPwd, String& deviceId) {
         LoginRequest request;
         request.set_name(userName);
         request.set_pwd(userPwd);
         request.set_deviceId(deviceId);
 
-        std::Reply reply;
+        Reply reply;
 
         ClientContext context;
         // RPC请求
@@ -145,25 +163,25 @@ namespace client {
         }
     }
 
-    std::Reply startRegisterRpc(ClientContext context, request, Reply reply) {
-          LoginClient loginclient(grpc::CreateChannel("localhost:50051", grpc::SslCredentials()));
-          std::string reply = loginclient.register(context, request, reply);
+    RegisterReply startRegisterRpc(ClientContext context, request, RegisterReply reply) {
+//          Regi loginclient(grpc::CreateChannel("localhost:50051", grpc::SslCredentials()));
+//          std::string reply = loginclient.register(context, request, reply);
     }
 
-    std::Reply startLoginRpc(ClientContext context, request, Reply reply) {
-          LoginClient loginclient(grpc::CreateChannel("localhost:50051", grpc::SslCredentials()));
-          std::string reply = loginclient.login(context, request, reply);
+    LoginReply startLoginRpc(ClientContext context, request, LoginReply reply) {
+//          LoginClient loginclient(grpc::CreateChannel("localhost:50051", grpc::SslCredentials()));
+//          std::string reply = loginclient.login(context, request, reply);
     }
 
-    std::Reply startCheckAuthRpc(ClientContext context, request, Reply reply) {
-          LoginClient loginclient(grpc::CreateChannel("localhost:50051", grpc::SslCredentials()));
-          std::string reply = loginclient.check_auth(context, request, reply);
+    CheckAuthReply startCheckAuthRpc(ClientContext context, request, CheckAuthReply reply) {
+//          LoginClient loginclient(grpc::CreateChannel("localhost:50051", grpc::SslCredentials()));
+//          std::string reply = loginclient.check_auth(context, request, reply);
     }
   
     //获取用户信息，返回User实体
-    std::User ClientImpl::get_userinfo(string username) {
+    User ClientImpl::get_userinfo(string username) {
         
-        std::User targetUser;
+        User targetUser;
         
         // 获取所有records
         sql = "SELECT * FROM users";

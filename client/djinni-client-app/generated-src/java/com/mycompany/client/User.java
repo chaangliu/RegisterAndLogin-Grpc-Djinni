@@ -12,7 +12,7 @@ public final class User {
 
     /*package*/ final String mPassword;
 
-    /*package*/ final int mAuth;
+    /*package*/ final String mAuth;
 
     /*package*/ final String mDeviceid;
 
@@ -20,7 +20,7 @@ public final class User {
             int id,
             String username,
             String password,
-            int auth,
+            String auth,
             String deviceid) {
         this.mId = id;
         this.mUsername = username;
@@ -41,7 +41,7 @@ public final class User {
         return mPassword;
     }
 
-    public int getAuth() {
+    public String getAuth() {
         return mAuth;
     }
 

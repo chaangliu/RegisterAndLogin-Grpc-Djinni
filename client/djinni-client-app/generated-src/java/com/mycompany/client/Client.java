@@ -3,17 +3,16 @@
 
 package com.mycompany.client;
 
-import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class Client {
-    public abstract ArrayList<User> getUserinfo();
+    public abstract User getUserinfo(String username);
 
-    public abstract void register(String username, String password, String deviceid);
+    public abstract Reply register(String username, String password, String deviceid);
 
-    public abstract void checkAuth(String username, String auth);
+    public abstract Reply checkAuth(String username, String auth);
 
-    public abstract void login(String username, String password, String deviceid);
+    public abstract Reply login(String username, String password, String deviceid);
 
     public static native Client createWithPath(String path);
 
@@ -41,35 +40,35 @@ public abstract class Client {
         }
 
         @Override
-        public ArrayList<User> getUserinfo()
+        public User getUserinfo(String username)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_getUserinfo(this.nativeRef);
+            return native_getUserinfo(this.nativeRef, username);
         }
-        private native ArrayList<User> native_getUserinfo(long _nativeRef);
+        private native User native_getUserinfo(long _nativeRef, String username);
 
         @Override
-        public void register(String username, String password, String deviceid)
+        public Reply register(String username, String password, String deviceid)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_register(this.nativeRef, username, password, deviceid);
+            return native_register(this.nativeRef, username, password, deviceid);
         }
-        private native void native_register(long _nativeRef, String username, String password, String deviceid);
+        private native Reply native_register(long _nativeRef, String username, String password, String deviceid);
 
         @Override
-        public void checkAuth(String username, String auth)
+        public Reply checkAuth(String username, String auth)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_checkAuth(this.nativeRef, username, auth);
+            return native_checkAuth(this.nativeRef, username, auth);
         }
-        private native void native_checkAuth(long _nativeRef, String username, String auth);
+        private native Reply native_checkAuth(long _nativeRef, String username, String auth);
 
         @Override
-        public void login(String username, String password, String deviceid)
+        public Reply login(String username, String password, String deviceid)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_login(this.nativeRef, username, password, deviceid);
+            return native_login(this.nativeRef, username, password, deviceid);
         }
-        private native void native_login(long _nativeRef, String username, String password, String deviceid);
+        private native Reply native_login(long _nativeRef, String username, String password, String deviceid);
     }
 }

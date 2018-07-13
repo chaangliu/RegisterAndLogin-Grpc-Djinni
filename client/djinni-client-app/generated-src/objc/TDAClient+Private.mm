@@ -6,6 +6,7 @@
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
+#import "TDAReply+Private.h"
 #import "TDAUser+Private.h"
 #include <exception>
 #include <stdexcept>
@@ -38,38 +39,41 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (nonnull NSArray<TDAUser *> *)getUserinfo {
+- (nonnull TDAUser *)getUserinfo:(nonnull NSString *)username {
     try {
-        auto objcpp_result_ = _cppRefHandle.get()->get_userinfo();
-        return ::djinni::List<::djinni_generated::User>::fromCpp(objcpp_result_);
+        auto objcpp_result_ = _cppRefHandle.get()->get_userinfo(::djinni::String::toCpp(username));
+        return ::djinni_generated::User::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)register:(nonnull NSString *)username
-        password:(nonnull NSString *)password
-        deviceid:(nonnull NSString *)deviceid {
+- (nonnull TDAReply *)register:(nonnull NSString *)username
+                      password:(nonnull NSString *)password
+                      deviceid:(nonnull NSString *)deviceid {
     try {
-        _cppRefHandle.get()->register(::djinni::String::toCpp(username),
-                                      ::djinni::String::toCpp(password),
-                                      ::djinni::String::toCpp(deviceid));
+        auto objcpp_result_ = _cppRefHandle.get()->register(::djinni::String::toCpp(username),
+                                                            ::djinni::String::toCpp(password),
+                                                            ::djinni::String::toCpp(deviceid));
+        return ::djinni_generated::Reply::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)checkAuth:(nonnull NSString *)username
-             auth:(nonnull NSString *)auth {
+- (nonnull TDAReply *)checkAuth:(nonnull NSString *)username
+                           auth:(nonnull NSString *)auth {
     try {
-        _cppRefHandle.get()->check_auth(::djinni::String::toCpp(username),
-                                        ::djinni::String::toCpp(auth));
+        auto objcpp_result_ = _cppRefHandle.get()->check_auth(::djinni::String::toCpp(username),
+                                                              ::djinni::String::toCpp(auth));
+        return ::djinni_generated::Reply::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)login:(nonnull NSString *)username
-     password:(nonnull NSString *)password
-     deviceid:(nonnull NSString *)deviceid {
+- (nonnull TDAReply *)login:(nonnull NSString *)username
+                   password:(nonnull NSString *)password
+                   deviceid:(nonnull NSString *)deviceid {
     try {
-        _cppRefHandle.get()->login(::djinni::String::toCpp(username),
-                                   ::djinni::String::toCpp(password),
-                                   ::djinni::String::toCpp(deviceid));
+        auto objcpp_result_ = _cppRefHandle.get()->login(::djinni::String::toCpp(username),
+                                                         ::djinni::String::toCpp(password),
+                                                         ::djinni::String::toCpp(deviceid));
+        return ::djinni_generated::Reply::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

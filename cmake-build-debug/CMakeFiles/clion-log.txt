@@ -1,0 +1,15 @@
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework
+-- Configuring done
+CMake Error at CMakeLists.txt:409 (add_executable):
+  Cannot find source file:
+
+    client/djinni-client-app/src/grpc/client.grpc.pb.cc
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp
+  .hxx .in .txx
+
+
+CMake Error: CMake can not determine linker language for target: homework
+CMake Error: Cannot determine link language for target "homework".
+-- Generating done
+-- Build files have been written to: /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/cmake-build-debug

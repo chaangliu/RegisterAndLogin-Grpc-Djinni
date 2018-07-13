@@ -3,6 +3,7 @@
 
 #include "NativeClient.hpp"  // my header
 #include "Marshal.hpp"
+#include "NativeReply.hpp"
 #include "NativeUser.hpp"
 
 namespace djinni_generated {
@@ -29,46 +30,49 @@ CJNIEXPORT jobject JNICALL Java_com_mycompany_client_Client_createWithPath(JNIEn
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT jobject JNICALL Java_com_mycompany_client_Client_00024CppProxy_native_1getUserinfo(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef)
+CJNIEXPORT jobject JNICALL Java_com_mycompany_client_Client_00024CppProxy_native_1getUserinfo(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_username)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
         const auto& ref = ::djinni::objectFromHandleAddress<::client::Client>(nativeRef);
-        auto r = ref->get_userinfo();
-        return ::djinni::release(::djinni::List<::djinni_generated::NativeUser>::fromCpp(jniEnv, r));
+        auto r = ref->get_userinfo(::djinni::String::toCpp(jniEnv, j_username));
+        return ::djinni::release(::djinni_generated::NativeUser::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT void JNICALL Java_com_mycompany_client_Client_00024CppProxy_native_1register(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_username, jstring j_password, jstring j_deviceid)
+CJNIEXPORT jobject JNICALL Java_com_mycompany_client_Client_00024CppProxy_native_1register(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_username, jstring j_password, jstring j_deviceid)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
         const auto& ref = ::djinni::objectFromHandleAddress<::client::Client>(nativeRef);
-        ref->register(::djinni::String::toCpp(jniEnv, j_username),
-                      ::djinni::String::toCpp(jniEnv, j_password),
-                      ::djinni::String::toCpp(jniEnv, j_deviceid));
-    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
+        auto r = ref->register(::djinni::String::toCpp(jniEnv, j_username),
+                               ::djinni::String::toCpp(jniEnv, j_password),
+                               ::djinni::String::toCpp(jniEnv, j_deviceid));
+        return ::djinni::release(::djinni_generated::NativeReply::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT void JNICALL Java_com_mycompany_client_Client_00024CppProxy_native_1checkAuth(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_username, jstring j_auth)
+CJNIEXPORT jobject JNICALL Java_com_mycompany_client_Client_00024CppProxy_native_1checkAuth(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_username, jstring j_auth)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
         const auto& ref = ::djinni::objectFromHandleAddress<::client::Client>(nativeRef);
-        ref->check_auth(::djinni::String::toCpp(jniEnv, j_username),
-                        ::djinni::String::toCpp(jniEnv, j_auth));
-    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
+        auto r = ref->check_auth(::djinni::String::toCpp(jniEnv, j_username),
+                                 ::djinni::String::toCpp(jniEnv, j_auth));
+        return ::djinni::release(::djinni_generated::NativeReply::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT void JNICALL Java_com_mycompany_client_Client_00024CppProxy_native_1login(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_username, jstring j_password, jstring j_deviceid)
+CJNIEXPORT jobject JNICALL Java_com_mycompany_client_Client_00024CppProxy_native_1login(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_username, jstring j_password, jstring j_deviceid)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
         const auto& ref = ::djinni::objectFromHandleAddress<::client::Client>(nativeRef);
-        ref->login(::djinni::String::toCpp(jniEnv, j_username),
-                   ::djinni::String::toCpp(jniEnv, j_password),
-                   ::djinni::String::toCpp(jniEnv, j_deviceid));
-    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
+        auto r = ref->login(::djinni::String::toCpp(jniEnv, j_username),
+                            ::djinni::String::toCpp(jniEnv, j_password),
+                            ::djinni::String::toCpp(jniEnv, j_deviceid));
+        return ::djinni::release(::djinni_generated::NativeReply::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
 }  // namespace djinni_generated

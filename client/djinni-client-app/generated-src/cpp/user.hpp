@@ -13,13 +13,13 @@ struct User final {
     int32_t id;
     std::string username;
     std::string password;
-    int32_t auth;
+    std::string auth;
     std::string deviceid;
 
     User(int32_t id_,
          std::string username_,
          std::string password_,
-         int32_t auth_,
+         std::string auth_,
          std::string deviceid_)
     : id(std::move(id_))
     , username(std::move(username_))

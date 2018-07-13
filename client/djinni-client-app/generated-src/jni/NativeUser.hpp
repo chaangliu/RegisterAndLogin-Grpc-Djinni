@@ -25,11 +25,11 @@ private:
     friend ::djinni::JniClass<NativeUser>;
 
     const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/mycompany/client/User") };
-    const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(ILjava/lang/String;Ljava/lang/String;ILjava/lang/String;)V") };
+    const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V") };
     const jfieldID field_mId { ::djinni::jniGetFieldID(clazz.get(), "mId", "I") };
     const jfieldID field_mUsername { ::djinni::jniGetFieldID(clazz.get(), "mUsername", "Ljava/lang/String;") };
     const jfieldID field_mPassword { ::djinni::jniGetFieldID(clazz.get(), "mPassword", "Ljava/lang/String;") };
-    const jfieldID field_mAuth { ::djinni::jniGetFieldID(clazz.get(), "mAuth", "I") };
+    const jfieldID field_mAuth { ::djinni::jniGetFieldID(clazz.get(), "mAuth", "Ljava/lang/String;") };
     const jfieldID field_mDeviceid { ::djinni::jniGetFieldID(clazz.get(), "mDeviceid", "Ljava/lang/String;") };
 };
 

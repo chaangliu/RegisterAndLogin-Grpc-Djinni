@@ -13,10 +13,10 @@ reply = record {
     auth: string;
 }
 
-client = interface +c {
-    static create_with_path(path: string): client;
+client_interface = interface +c {
+    static create_with_path(path: string): client_interface;
     get_userinfo(username: string): user;
-    register(username: string, password: string, deviceid: string): ;
-    check_auth(username: string, auth: string);
-    login(username: string, password: string, deviceid: string);
+    register_account(username: string, password: string, deviceid: string): reply;
+    check_auth(username: string, auth: string): reply;
+    login(username: string, password: string, deviceid: string): reply;
 }

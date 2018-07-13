@@ -9,14 +9,14 @@
 - (nonnull instancetype)initWithId:(int32_t)id
                           username:(nonnull NSString *)username
                           password:(nonnull NSString *)password
-                              auth:(int32_t)auth
+                              auth:(nonnull NSString *)auth
                           deviceid:(nonnull NSString *)deviceid
 {
     if (self = [super init]) {
         _id = id;
         _username = [username copy];
         _password = [password copy];
-        _auth = auth;
+        _auth = [auth copy];
         _deviceid = [deviceid copy];
     }
     return self;
@@ -25,7 +25,7 @@
 + (nonnull instancetype)userWithId:(int32_t)id
                           username:(nonnull NSString *)username
                           password:(nonnull NSString *)password
-                              auth:(int32_t)auth
+                              auth:(nonnull NSString *)auth
                           deviceid:(nonnull NSString *)deviceid
 {
     return [[self alloc] initWithId:id
@@ -37,7 +37,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p id:%@ username:%@ password:%@ auth:%@ deviceid:%@>", self.class, (void *)self, @(self.id), self.username, self.password, @(self.auth), self.deviceid];
+    return [NSString stringWithFormat:@"<%@ %p id:%@ username:%@ password:%@ auth:%@ deviceid:%@>", self.class, (void *)self, @(self.id), self.username, self.password, self.auth, self.deviceid];
 }
 
 @end
