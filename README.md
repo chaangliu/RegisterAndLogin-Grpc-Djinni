@@ -4,12 +4,17 @@
 ### Intro
 - 一个Android/iOS客户端「单点登录注册」的练习。    
 - 后台使用[Grpc-java](https://github.com/grpc/grpc-java)，数据库采用MySql Jdbc，中台使用[Djinni](https://github.com/dropbox/djinni)实现Android和iOS跨平台。
-- [NOTICE]由于是一个短时间的after-work project，功能并未完全跑通，只实现了关键逻辑以及学习了两个框架的开发流程，作为参考。详见「已知问题」。
+- [NOTICE]这是一个after-work project，目的是学习了两个框架的开发流程和实现关键逻辑。仍存在的问题详见「已知问题」。
 
 ![流程](https://github.com/LarryLawrence/RegisterAndLogin-Grpc-Djinni/blob/master/client/screenshots/general-process.png)  
 1. 进入App后，先获取保存在native lib数据库中客户端保存的auth，通过rpc请求与后台对比，如果不一致，则跳转登录页；否则无需重新登录。
 2. 登录时，如果deviceId发生变化，则生成新的auth，保存在server并返回给native lib保存。
 3. 原本在App中的业务逻辑，应尽量移动到中间层native lib中来，方便移植、减少代码；比如客户端auth的存取，无需交给App来做。
+4. Server端为3个接口定义了3种proto，3种返回实体；Native lib端作为桥接，使用djinni生成的抽象类定义了相应的接口，在其实现类中的每一个方法里，分别对server的这些接口做rpc请求。
+   ```
+   	// RPC请求
+   	Status status = stub_->Register(&context, request, &registerReply);
+   ```
 
 ### gRPC
 使用[Grpc-java](https://github.com/grpc/grpc-java)，在```.proto```文件中一次定义```service```，就可以实现任何```gRPC```支持的语言的客户端和服务端，
@@ -21,11 +26,10 @@
 用c++编写一次，就可以生成可以在Android和iOS上跨平台调用的可执行文件，相当于把gRPC的C++ Client放置在Djinni中做个中间层。
 
 ### Server Side
-Server端采用```gprc-java```, 数据库采用```MySQL``` + ```JDBC```。提供4个接口:
+Server端采用```gprc-java```, 数据库采用```MySQL``` + ```JDBC```。提供3个接口:
 1. ```checkAuth``` 检查client传给server的auth是否过期，比如是否因为deviceId变化而需要重新登录。
 2. ```register``` 注册接口。
 3. ```login``` 登录接口。
-4. ```getUserInfo``` 获取用户信息，返回用户信息实体。
 
 
 ### Client Side

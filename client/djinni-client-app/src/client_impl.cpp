@@ -33,16 +33,10 @@ namespace client {
     int rc;
     std::string sql;
     sqlite3_stmt *statement;
-    // LoginClient(std::shared_ptr<Channel> channel): stub_(Login::NewStub(channel)) {}
-//    std::shared_ptr<ClientImpl> ClientImpl::create_with_path(const std::string & path) {
-//        return std::make_shared<ClientImpl>(path);
-//    }
 
-//    ClientImpl::ClientImpl(const std::string &path, std::string &deviceid) : deviceid(deviceid) {
-//        _path = path + "/userdata.db";
-//        _setup_db();
-//    }
     ClientImpl::ClientImpl(){}
+
+    //TODO 使用安全通信
     std::unique_ptr<Client::Stub> stub_(
             Client::NewStub(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials())));
 
@@ -194,16 +188,14 @@ namespace client {
             sqlite3_close(db);
             return;
         }
-
         // 如果table不存在就创建一个
-        sql = "CREATE TABLE IF NOT EXISTS todos("  \
+        sql = "CREATE TABLE IF NOT EXISTS user_table("  \
             "id INTEGER PRIMARY KEY AUTOINCREMENT    NOT NULL," \
             "username          TEXT    NOT NULL," \
             "password          TEXT    NOT NULL," \
             "auth          TEXT    NOT NULL," \
             "deviceid         INT     NOT NULL);";
         _handle_query(sql);
-
         // 判断table是否是空，可以初始化一些数据
         sql = "SELECT * FROM users";
         _handle_query(sql);
