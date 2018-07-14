@@ -2185,12 +2185,6 @@
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/cpp/user.hpp">
 			<Option target="djinni_client_app"/>
 		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeClient.cpp">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeClient.hpp">
-			<Option target="djinni_client_app"/>
-		</Unit>
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeClientInterface.cpp">
 			<Option target="djinni_client_app"/>
 		</Unit>
@@ -2203,28 +2197,10 @@
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeReply.hpp">
 			<Option target="djinni_client_app"/>
 		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeReplyStruct.cpp">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeReplyStruct.hpp">
-			<Option target="djinni_client_app"/>
-		</Unit>
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeUser.cpp">
 			<Option target="djinni_client_app"/>
 		</Unit>
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeUser.hpp">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeUserStruct.cpp">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeUserStruct.hpp">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAClient+Private.h">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAClient.h">
 			<Option target="djinni_client_app"/>
 		</Unit>
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAClientInterface+Private.h">
@@ -2239,22 +2215,10 @@
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAReply.h">
 			<Option target="djinni_client_app"/>
 		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAReplyStruct+Private.h">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAReplyStruct.h">
-			<Option target="djinni_client_app"/>
-		</Unit>
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAUser+Private.h">
 			<Option target="djinni_client_app"/>
 		</Unit>
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAUser.h">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAUserStruct+Private.h">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/objc/TDAUserStruct.h">
 			<Option target="djinni_client_app"/>
 		</Unit>
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/client.grpc.pb.cc">
@@ -2273,12 +2237,6 @@
 			<Option target="djinni_client_app"/>
 		</Unit>
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/client_impl.hpp">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/main.cpp">
-			<Option target="djinni_client_app"/>
-		</Unit>
-		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/main.h">
 			<Option target="djinni_client_app"/>
 		</Unit>
 		<Unit filename="/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/CMakeLists.txt">

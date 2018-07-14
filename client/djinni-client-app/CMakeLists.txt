@@ -705,35 +705,23 @@ set(SOURCE_FILES
         generated-src/cpp/client_interface.hpp
         generated-src/cpp/reply.hpp
         generated-src/cpp/user.hpp
-        generated-src/jni/NativeClient.cpp
-        generated-src/jni/NativeClient.hpp
         generated-src/jni/NativeClientInterface.cpp
         generated-src/jni/NativeClientInterface.hpp
         generated-src/jni/NativeReply.cpp
         generated-src/jni/NativeReply.hpp
-        generated-src/jni/NativeReplyStruct.cpp
-        generated-src/jni/NativeReplyStruct.hpp
         generated-src/jni/NativeUser.cpp
         generated-src/jni/NativeUser.hpp
-        generated-src/jni/NativeUserStruct.cpp
-        generated-src/jni/NativeUserStruct.hpp
-        generated-src/objc/TDAClient+Private.h
-        generated-src/objc/TDAClient.h
         generated-src/objc/TDAClientInterface+Private.h
         generated-src/objc/TDAClientInterface.h
         generated-src/objc/TDAReply+Private.h
         generated-src/objc/TDAReply.h
-        generated-src/objc/TDAReplyStruct+Private.h
-        generated-src/objc/TDAReplyStruct.h
         generated-src/objc/TDAUser+Private.h
         generated-src/objc/TDAUser.h
-        generated-src/objc/TDAUserStruct+Private.h
-        generated-src/objc/TDAUserStruct.h
         src/client.grpc.pb.cc
         src/client.grpc.pb.h
         src/client.pb.cc
         src/client.pb.h
         src/client_impl.cpp
-        src/client_impl.hpp src/main.h src/main.cpp src/main.h)
+        src/client_impl.hpp)
 
 add_executable(djinni_client_app ${SOURCE_FILES})

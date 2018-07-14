@@ -1475,8 +1475,6 @@ header.h
 /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/deps/gyp/test/win/vs-macros/hello.cc
 
 /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/cpp/client_interface.hpp
-memory
--
 string
 -
 
@@ -1703,8 +1701,4 @@ vector
 -
 ../generated-src/cpp/client_interface.hpp
 /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/cpp/client_interface.hpp
-
-/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/main.cpp
-iostream
--
 

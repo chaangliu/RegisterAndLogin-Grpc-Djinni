@@ -11193,33 +11193,6 @@ deps/sqlite3/sqlite3.c.s:
 	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/deps/sqlite3/sqlite3.c.s
 .PHONY : deps/sqlite3/sqlite3.c.s
 
-generated-src/jni/NativeClient.o: generated-src/jni/NativeClient.cpp.o
-
-.PHONY : generated-src/jni/NativeClient.o
-
-# target to build an object file
-generated-src/jni/NativeClient.cpp.o:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o
-.PHONY : generated-src/jni/NativeClient.cpp.o
-
-generated-src/jni/NativeClient.i: generated-src/jni/NativeClient.cpp.i
-
-.PHONY : generated-src/jni/NativeClient.i
-
-# target to preprocess a source file
-generated-src/jni/NativeClient.cpp.i:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.i
-.PHONY : generated-src/jni/NativeClient.cpp.i
-
-generated-src/jni/NativeClient.s: generated-src/jni/NativeClient.cpp.s
-
-.PHONY : generated-src/jni/NativeClient.s
-
-# target to generate assembly for a file
-generated-src/jni/NativeClient.cpp.s:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.s
-.PHONY : generated-src/jni/NativeClient.cpp.s
-
 generated-src/jni/NativeClientInterface.o: generated-src/jni/NativeClientInterface.cpp.o
 
 .PHONY : generated-src/jni/NativeClientInterface.o
@@ -11274,33 +11247,6 @@ generated-src/jni/NativeReply.cpp.s:
 	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.s
 .PHONY : generated-src/jni/NativeReply.cpp.s
 
-generated-src/jni/NativeReplyStruct.o: generated-src/jni/NativeReplyStruct.cpp.o
-
-.PHONY : generated-src/jni/NativeReplyStruct.o
-
-# target to build an object file
-generated-src/jni/NativeReplyStruct.cpp.o:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o
-.PHONY : generated-src/jni/NativeReplyStruct.cpp.o
-
-generated-src/jni/NativeReplyStruct.i: generated-src/jni/NativeReplyStruct.cpp.i
-
-.PHONY : generated-src/jni/NativeReplyStruct.i
-
-# target to preprocess a source file
-generated-src/jni/NativeReplyStruct.cpp.i:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.i
-.PHONY : generated-src/jni/NativeReplyStruct.cpp.i
-
-generated-src/jni/NativeReplyStruct.s: generated-src/jni/NativeReplyStruct.cpp.s
-
-.PHONY : generated-src/jni/NativeReplyStruct.s
-
-# target to generate assembly for a file
-generated-src/jni/NativeReplyStruct.cpp.s:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.s
-.PHONY : generated-src/jni/NativeReplyStruct.cpp.s
-
 generated-src/jni/NativeUser.o: generated-src/jni/NativeUser.cpp.o
 
 .PHONY : generated-src/jni/NativeUser.o
@@ -11327,33 +11273,6 @@ generated-src/jni/NativeUser.s: generated-src/jni/NativeUser.cpp.s
 generated-src/jni/NativeUser.cpp.s:
 	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.s
 .PHONY : generated-src/jni/NativeUser.cpp.s
-
-generated-src/jni/NativeUserStruct.o: generated-src/jni/NativeUserStruct.cpp.o
-
-.PHONY : generated-src/jni/NativeUserStruct.o
-
-# target to build an object file
-generated-src/jni/NativeUserStruct.cpp.o:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o
-.PHONY : generated-src/jni/NativeUserStruct.cpp.o
-
-generated-src/jni/NativeUserStruct.i: generated-src/jni/NativeUserStruct.cpp.i
-
-.PHONY : generated-src/jni/NativeUserStruct.i
-
-# target to preprocess a source file
-generated-src/jni/NativeUserStruct.cpp.i:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.i
-.PHONY : generated-src/jni/NativeUserStruct.cpp.i
-
-generated-src/jni/NativeUserStruct.s: generated-src/jni/NativeUserStruct.cpp.s
-
-.PHONY : generated-src/jni/NativeUserStruct.s
-
-# target to generate assembly for a file
-generated-src/jni/NativeUserStruct.cpp.s:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.s
-.PHONY : generated-src/jni/NativeUserStruct.cpp.s
 
 src/client.grpc.pb.o: src/client.grpc.pb.cc.o
 
@@ -11435,33 +11354,6 @@ src/client_impl.s: src/client_impl.cpp.s
 src/client_impl.cpp.s:
 	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.s
 .PHONY : src/client_impl.cpp.s
-
-src/main.o: src/main.cpp.o
-
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
-
-src/main.i: src/main.cpp.i
-
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -12702,24 +12594,15 @@ help:
 	@echo "... deps/sqlite3/sqlite3.o"
 	@echo "... deps/sqlite3/sqlite3.i"
 	@echo "... deps/sqlite3/sqlite3.s"
-	@echo "... generated-src/jni/NativeClient.o"
-	@echo "... generated-src/jni/NativeClient.i"
-	@echo "... generated-src/jni/NativeClient.s"
 	@echo "... generated-src/jni/NativeClientInterface.o"
 	@echo "... generated-src/jni/NativeClientInterface.i"
 	@echo "... generated-src/jni/NativeClientInterface.s"
 	@echo "... generated-src/jni/NativeReply.o"
 	@echo "... generated-src/jni/NativeReply.i"
 	@echo "... generated-src/jni/NativeReply.s"
-	@echo "... generated-src/jni/NativeReplyStruct.o"
-	@echo "... generated-src/jni/NativeReplyStruct.i"
-	@echo "... generated-src/jni/NativeReplyStruct.s"
 	@echo "... generated-src/jni/NativeUser.o"
 	@echo "... generated-src/jni/NativeUser.i"
 	@echo "... generated-src/jni/NativeUser.s"
-	@echo "... generated-src/jni/NativeUserStruct.o"
-	@echo "... generated-src/jni/NativeUserStruct.i"
-	@echo "... generated-src/jni/NativeUserStruct.s"
 	@echo "... src/client.grpc.pb.o"
 	@echo "... src/client.grpc.pb.i"
 	@echo "... src/client.grpc.pb.s"
@@ -12729,9 +12612,6 @@ help:
 	@echo "... src/client_impl.o"
 	@echo "... src/client_impl.i"
 	@echo "... src/client_impl.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
 .PHONY : help
 
 

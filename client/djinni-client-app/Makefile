@@ -13,7 +13,7 @@ GypAndroid.mk: libclientapp.gyp ./deps/djinni/support-lib/support_lib.gyp client
 	ANDROID_BUILD_TOP=$(shell dirname `which ndk-build`) deps/gyp/gyp --depth=. -f android -DOS=android -Ideps/djinni/common.gypi ./libclientapp.gyp --root-target=libclientapp_jni
 
 android: GypAndroid.mk
-	cd android_project/ClientApp/ && ./gradlew app:assembleDebug
+	cd android_project/AndroidClientApp/ && ./gradlew app:assembleDebug
 	@echo "Apks produced at:"
 	@python deps/djinni/example/glob.py ./ '*.apk'
 

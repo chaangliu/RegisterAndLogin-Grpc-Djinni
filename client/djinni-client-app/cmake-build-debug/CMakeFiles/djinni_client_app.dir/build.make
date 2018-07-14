@@ -9897,33 +9897,9 @@ CMakeFiles/djinni_client_app.dir/deps/sqlite3/sqlite3.c.o.provides: CMakeFiles/d
 CMakeFiles/djinni_client_app.dir/deps/sqlite3/sqlite3.c.o.provides.build: CMakeFiles/djinni_client_app.dir/deps/sqlite3/sqlite3.c.o
 
 
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o: CMakeFiles/djinni_client_app.dir/flags.make
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o: ../generated-src/jni/NativeClient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_411) "Building CXX object CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeClient.cpp
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeClient.cpp > CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.i
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeClient.cpp -o CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.s
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o.requires:
-
-.PHONY : CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o.requires
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o.provides: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o.requires
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o.provides.build
-.PHONY : CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o.provides
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o.provides.build: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o
-
-
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o: CMakeFiles/djinni_client_app.dir/flags.make
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o: ../generated-src/jni/NativeClientInterface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_412) "Building CXX object CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_411) "Building CXX object CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeClientInterface.cpp
 
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.i: cmake_force
@@ -9947,7 +9923,7 @@ CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o.p
 
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o: CMakeFiles/djinni_client_app.dir/flags.make
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o: ../generated-src/jni/NativeReply.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_413) "Building CXX object CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_412) "Building CXX object CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeReply.cpp
 
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.i: cmake_force
@@ -9969,33 +9945,9 @@ CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o.provides: C
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o.provides.build: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o
 
 
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o: CMakeFiles/djinni_client_app.dir/flags.make
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o: ../generated-src/jni/NativeReplyStruct.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_414) "Building CXX object CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeReplyStruct.cpp
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeReplyStruct.cpp > CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.i
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeReplyStruct.cpp -o CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.s
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o.requires:
-
-.PHONY : CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o.requires
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o.provides: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o.requires
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o.provides.build
-.PHONY : CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o.provides
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o.provides.build: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o
-
-
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o: CMakeFiles/djinni_client_app.dir/flags.make
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o: ../generated-src/jni/NativeUser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_415) "Building CXX object CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_413) "Building CXX object CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeUser.cpp
 
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.i: cmake_force
@@ -10017,33 +9969,9 @@ CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o.provides: CM
 CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o.provides.build: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o
 
 
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o: CMakeFiles/djinni_client_app.dir/flags.make
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o: ../generated-src/jni/NativeUserStruct.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_416) "Building CXX object CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeUserStruct.cpp
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeUserStruct.cpp > CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.i
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/generated-src/jni/NativeUserStruct.cpp -o CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.s
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o.requires:
-
-.PHONY : CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o.requires
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o.provides: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o.requires
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o.provides.build
-.PHONY : CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o.provides
-
-CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o.provides.build: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o
-
-
 CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o: CMakeFiles/djinni_client_app.dir/flags.make
 CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o: ../src/client.grpc.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_417) "Building CXX object CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_414) "Building CXX object CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/client.grpc.pb.cc
 
 CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.i: cmake_force
@@ -10067,7 +9995,7 @@ CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o.provides.build: CMakeFi
 
 CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o: CMakeFiles/djinni_client_app.dir/flags.make
 CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o: ../src/client.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_418) "Building CXX object CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_415) "Building CXX object CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/client.pb.cc
 
 CMakeFiles/djinni_client_app.dir/src/client.pb.cc.i: cmake_force
@@ -10091,7 +10019,7 @@ CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o.provides.build: CMakeFiles/d
 
 CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o: CMakeFiles/djinni_client_app.dir/flags.make
 CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o: ../src/client_impl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_419) "Building CXX object CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_416) "Building CXX object CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/client_impl.cpp
 
 CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.i: cmake_force
@@ -10111,30 +10039,6 @@ CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o.provides: CMakeFiles/djin
 .PHONY : CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o.provides
 
 CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o.provides.build: CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o
-
-
-CMakeFiles/djinni_client_app.dir/src/main.cpp.o: CMakeFiles/djinni_client_app.dir/flags.make
-CMakeFiles/djinni_client_app.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_420) "Building CXX object CMakeFiles/djinni_client_app.dir/src/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/djinni_client_app.dir/src/main.cpp.o -c /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/main.cpp
-
-CMakeFiles/djinni_client_app.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/djinni_client_app.dir/src/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/main.cpp > CMakeFiles/djinni_client_app.dir/src/main.cpp.i
-
-CMakeFiles/djinni_client_app.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/djinni_client_app.dir/src/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/src/main.cpp -o CMakeFiles/djinni_client_app.dir/src/main.cpp.s
-
-CMakeFiles/djinni_client_app.dir/src/main.cpp.o.requires:
-
-.PHONY : CMakeFiles/djinni_client_app.dir/src/main.cpp.o.requires
-
-CMakeFiles/djinni_client_app.dir/src/main.cpp.o.provides: CMakeFiles/djinni_client_app.dir/src/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/main.cpp.o.provides.build
-.PHONY : CMakeFiles/djinni_client_app.dir/src/main.cpp.o.provides
-
-CMakeFiles/djinni_client_app.dir/src/main.cpp.o.provides.build: CMakeFiles/djinni_client_app.dir/src/main.cpp.o
 
 
 # Object files for target djinni_client_app
@@ -10549,16 +10453,12 @@ djinni_client_app_OBJECTS = \
 "CMakeFiles/djinni_client_app.dir/deps/gyp/test/win/vs-macros/hello.cc.o" \
 "CMakeFiles/djinni_client_app.dir/deps/sqlite3/shell.c.o" \
 "CMakeFiles/djinni_client_app.dir/deps/sqlite3/sqlite3.c.o" \
-"CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o" \
 "CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o" \
 "CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o" \
-"CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o" \
 "CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o" \
-"CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o" \
 "CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o" \
 "CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o" \
-"CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o" \
-"CMakeFiles/djinni_client_app.dir/src/main.cpp.o"
+"CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o"
 
 # External object files for target djinni_client_app
 djinni_client_app_EXTERNAL_OBJECTS =
@@ -10973,19 +10873,15 @@ djinni_client_app: CMakeFiles/djinni_client_app.dir/deps/gyp/test/win/uldi/main.
 djinni_client_app: CMakeFiles/djinni_client_app.dir/deps/gyp/test/win/vs-macros/hello.cc.o
 djinni_client_app: CMakeFiles/djinni_client_app.dir/deps/sqlite3/shell.c.o
 djinni_client_app: CMakeFiles/djinni_client_app.dir/deps/sqlite3/sqlite3.c.o
-djinni_client_app: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o
 djinni_client_app: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o
 djinni_client_app: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o
-djinni_client_app: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o
 djinni_client_app: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o
-djinni_client_app: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o
 djinni_client_app: CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o
 djinni_client_app: CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o
 djinni_client_app: CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o
-djinni_client_app: CMakeFiles/djinni_client_app.dir/src/main.cpp.o
 djinni_client_app: CMakeFiles/djinni_client_app.dir/build.make
 djinni_client_app: CMakeFiles/djinni_client_app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_421) "Linking CXX executable djinni_client_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_417) "Linking CXX executable djinni_client_app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/djinni_client_app.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -11403,16 +11299,12 @@ CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/deps
 CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/deps/gyp/test/win/vs-macros/hello.cc.o.requires
 CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/deps/sqlite3/shell.c.o.requires
 CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/deps/sqlite3/sqlite3.c.o.requires
-CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClient.cpp.o.requires
 CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o.requires
 CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o.requires
-CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReplyStruct.cpp.o.requires
 CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o.requires
-CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUserStruct.cpp.o.requires
 CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o.requires
 CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o.requires
 CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o.requires
-CMakeFiles/djinni_client_app.dir/requires: CMakeFiles/djinni_client_app.dir/src/main.cpp.o.requires
 
 .PHONY : CMakeFiles/djinni_client_app.dir/requires
 

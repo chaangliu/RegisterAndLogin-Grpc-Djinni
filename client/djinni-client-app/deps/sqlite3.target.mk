@@ -2,18 +2,16 @@
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_MODULE := libclientapp_jni
-LOCAL_MODULE_SUFFIX := .so
+LOCAL_MODULE_CLASS := STATIC_LIBRARIES
+LOCAL_MODULE := sqlite3
+LOCAL_MODULE_SUFFIX := .a
 LOCAL_MODULE_TARGET_ARCH := $(TARGET_$(GYP_VAR_PREFIX)ARCH)
 LOCAL_SDK_VERSION := 19
 gyp_intermediate_dir := $(call local-intermediates-dir,,$(GYP_VAR_PREFIX))
 gyp_shared_intermediate_dir := $(call intermediates-dir-for,GYP,shared,,,$(GYP_VAR_PREFIX))
 
 # Make sure our deps are built first.
-GYP_TARGET_DEPENDENCIES := \
-	$(call intermediates-dir-for,STATIC_LIBRARIES,djinni_jni,,,$(GYP_VAR_PREFIX))/djinni_jni.a \
-	$(call intermediates-dir-for,STATIC_LIBRARIES,sqlite3,,,$(GYP_VAR_PREFIX))/sqlite3.a
+GYP_TARGET_DEPENDENCIES :=
 
 GYP_GENERATED_OUTPUTS :=
 
@@ -25,36 +23,31 @@ LOCAL_GENERATED_SOURCES :=
 GYP_COPIED_SOURCE_ORIGIN_DIRS :=
 
 LOCAL_SRC_FILES := \
-	deps/djinni/support-lib/jni/djinni_main.cpp \
-	generated-src/jni/NativeUser.cpp \
-	generated-src/jni/NativeClientInterface.cpp \
-	generated-src/jni/NativeReply.cpp \
-	src/client_impl.cpp
+	deps/sqlite3/sqlite3.c
 
 
 # Flags passed to both C and C++ files.
 MY_CFLAGS_Debug := \
 	-gdwarf-2 \
-	-Werror \
 	-Wall \
-	-Wextra \
 	-Wno-missing-field-initializers \
+	-DHAVE_USLEEP=1 \
+	-DSQLITE_TEMP_STORE=3 \
+	-Wno-unused-const-variable \
+	-Wno-unused-parameter \
 	-g \
 	-O0 \
 	-DDEBUG=1
 
 MY_DEFS_Debug := \
+	'-DHAVE_USLEEP=1' \
+	'-DSQLITE_TEMP_STORE=3' \
 	'-DDEBUG=1'
 
 
 # Include paths placed before CFLAGS/CPPFLAGS
 LOCAL_C_INCLUDES_Debug := \
-	$(LOCAL_PATH)/generated-src/jni \
-	$(LOCAL_PATH)/generated-src/cpp \
-	$(LOCAL_PATH)/src \
-	$(LOCAL_PATH)/deps \
-	$(LOCAL_PATH)/deps/sqlite3 \
-	$(LOCAL_PATH)/deps/djinni/support-lib/jni
+	$(LOCAL_PATH)/deps/sqlite3
 
 
 # Flags passed to only C++ (and not C) files.
@@ -68,10 +61,12 @@ LOCAL_CPPFLAGS_Debug := \
 # Flags passed to both C and C++ files.
 MY_CFLAGS_Release := \
 	-gdwarf-2 \
-	-Werror \
 	-Wall \
-	-Wextra \
 	-Wno-missing-field-initializers \
+	-DHAVE_USLEEP=1 \
+	-DSQLITE_TEMP_STORE=3 \
+	-Wno-unused-const-variable \
+	-Wno-unused-parameter \
 	-Os \
 	-fomit-frame-pointer \
 	-fdata-sections \
@@ -79,17 +74,14 @@ MY_CFLAGS_Release := \
 	-DNDEBUG=1
 
 MY_DEFS_Release := \
+	'-DHAVE_USLEEP=1' \
+	'-DSQLITE_TEMP_STORE=3' \
 	'-DNDEBUG=1'
 
 
 # Include paths placed before CFLAGS/CPPFLAGS
 LOCAL_C_INCLUDES_Release := \
-	$(LOCAL_PATH)/generated-src/jni \
-	$(LOCAL_PATH)/generated-src/cpp \
-	$(LOCAL_PATH)/src \
-	$(LOCAL_PATH)/deps \
-	$(LOCAL_PATH)/deps/sqlite3 \
-	$(LOCAL_PATH)/deps/djinni/support-lib/jni
+	$(LOCAL_PATH)/deps/sqlite3
 
 
 # Flags passed to only C++ (and not C) files.
@@ -105,25 +97,4 @@ LOCAL_C_INCLUDES := $(GYP_COPIED_SOURCE_ORIGIN_DIRS) $(LOCAL_C_INCLUDES_$(GYP_CO
 LOCAL_CPPFLAGS := $(LOCAL_CPPFLAGS_$(GYP_CONFIGURATION))
 LOCAL_ASFLAGS := $(LOCAL_CFLAGS)
 ### Rules for final target.
-
-LOCAL_LDFLAGS_Debug := \
-	-llog \
-	-Wl,--build-id,--gc-sections,--exclude-libs,ALL
-
-
-LOCAL_LDFLAGS_Release := \
-	-llog \
-	-Wl,--build-id,--gc-sections,--exclude-libs,ALL
-
-LOCAL_GYP_LIBS :=
-
-LOCAL_LDFLAGS := $(LOCAL_LDFLAGS_$(GYP_CONFIGURATION)) $(LOCAL_GYP_LIBS)
-
-LOCAL_STATIC_LIBRARIES := \
-	djinni_jni \
-	sqlite3
-
-# Enable grouping to fix circular references
-LOCAL_GROUP_STATIC_LIBRARIES := true
-LOCAL_PRELINK_MODULE := false
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)

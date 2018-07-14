@@ -9,7 +9,7 @@ GYP_HOST_MULTILIB ?=
 
 include $(LOCAL_PATH)/deps/djinni/support-lib/djinni_jni.target.mk
 include $(LOCAL_PATH)/deps/sqlite3.target.mk
-include $(LOCAL_PATH)/libtodoapp_jni.target.mk
+include $(LOCAL_PATH)/libclientapp_jni.target.mk
 
 # "gyp_all_modules" is a concatenation of the "gyp_all_modules" targets from
 # all the included sub-makefiles. This is just here to clarify.

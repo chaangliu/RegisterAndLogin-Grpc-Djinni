@@ -4,6 +4,7 @@
 
 ifndef ANDROID_NDK_HOME
 ANDROID_NDK_HOME = $(abspath $(dir $(realpath $(shell which ndk-build))))
+#ANDROID_NDK_HOME = "/Users/huangshan/Library/Android/android-ndk-r17b"
 endif
 
 SCALA_VERSION=2.11
