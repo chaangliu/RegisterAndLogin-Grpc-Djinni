@@ -9,6 +9,7 @@
 ![流程](https://github.com/LarryLawrence/RegisterAndLogin-Grpc-Djinni/blob/master/client/screenshots/general-process.png)  
 1. 进入App后，先获取保存在native lib数据库中客户端保存的auth，通过rpc请求与后台对比，如果不一致，则跳转登录页；否则无需重新登录。
 2. 登录时，如果deviceId发生变化，则生成新的auth，保存在server并返回给native lib保存。
+3. 原本在App中的业务逻辑，应尽量移动到中间层native lib中来，方便移植、减少代码；比如客户端auth的存取，无需交给App来做。
 
 ### gRPC
 使用[Grpc-java](https://github.com/grpc/grpc-java)，在```.proto```文件中一次定义```service```，就可以实现任何```gRPC```支持的语言的客户端和服务端，
@@ -17,25 +18,29 @@
 
 
 ### Djinni
-用c++编写一次，就可以生成可以在Android和iOS上跨平台调用的可执行文件。
+用c++编写一次，就可以生成可以在Android和iOS上跨平台调用的可执行文件，相当于把gRPC的C++ Client放置在Djinni中做个中间层。
 
 ### Server Side
-```grpc-go```的依赖被墙严重，故Server端采用```gprc-java```, 数据库采用```MySQL``` + ```JDBC```。提供4个接口:
-1. ```getUserInfo``` 获取用户信息，返回用户信息实体。
-2. ```checkAuth``` 检查client传给server的auth是否过期，比如是否因为deviceId变化而需要重新登录。
-3. ```register``` 注册接口。
-4. ```login``` 登录接口。
+Server端采用```gprc-java```, 数据库采用```MySQL``` + ```JDBC```。提供4个接口:
+1. ```checkAuth``` 检查client传给server的auth是否过期，比如是否因为deviceId变化而需要重新登录。
+2. ```register``` 注册接口。
+3. ```login``` 登录接口。
+4. ```getUserInfo``` 获取用户信息，返回用户信息实体。
+
 
 ### Client Side
 中台采用[Djinni](https://github.com/dropbox/djinni)。中台负责转发Android/iOS客户端的rpc请求，也可以做一些通用的操作，比如保存当前用户的auth。
 编写djinni可以实现多端代码。前台只实现了Android端对动态链接库的调用范例(android_project folder)，iOS未实现。
 
-### 安全通信
+### 安全性
+##### 通信
 ```gRPC```本身提供了三种认证方式(详见：[Authentication](https://grpc.io/docs/guides/auth.html#supported-auth-mechanisms))，    
-这个项目中使用了第一种。
 1. 使用client-side的SSL/TLS
 2. 使用Google的基于token的认证
 3. 扩展grpc的API实现你自己的认证方法
+
+##### 密码保存
+Server端密码保存方面，使用了[PBKDF2](https://en.wikipedia.org/wiki/PBKDF2)算法，我对它的salt做了改进。
 
 ### 目录结构
 **client目录**：
@@ -61,7 +66,7 @@
 │   ├── libclientapp_jni.target.mk
 │   ├── run_djinni.sh 运行脚本
 │   └── src
-│       ├── client_impl.cpp 原生方法具体实现
+│       ├── client_impl.cpp native方法具体实现
 │       └── client_impl.hpp 头文件
 └── screenshots 截图
     └── general-process.png
@@ -72,22 +77,6 @@
 .
 └── grpc
     └── registerandlogin
-        ├── generated 根据proto文件生成的封装好的请求/返回实体、Proto、Builder文件等
-        │   ├── CheckAuthProto.java 
-        │   ├── CheckAuthReply.java 返回实体
-        │   ├── CheckAuthReplyOrBuilder.java Builder接口
-        │   ├── CheckAuthRequest.java 请求实体
-        │   ├── CheckAuthRequestOrBuilder.java Builder接口
-        │   ├── LoginProto.java
-        │   ├── LoginReply.java 返回实体
-        │   ├── LoginReplyOrBuilder.java
-        │   ├── LoginRequest.java 请求实体
-        │   ├── LoginRequestOrBuilder.java Builder接口
-        │   ├── RegisterProto.java 
-        │   ├── RegisterReply.java 返回实体
-        │   ├── RegisterReplyOrBuilder.java Builder接口
-        │   ├── RegisterRequest.java 请求实体
-        │   └── RegisterRequestOrBuilder.java Builder接口
         ├── grpc 根据proto文件生成的，供给/server目录下具体实现类使用的Stub类
         │   ├── CheckAuthGrpc.java 
         │   ├── LoginGrpc.java
@@ -98,15 +87,32 @@
         │   └── register.proto
         ├── server 真正的server功能实现类，可在request到来时做想要的处理并且回调reply
         │   └── RegisterAndLoginServer.java 
-        └── utils 数据库创建查询的帮助类
-            └── DataBaseUtil.java
+        └── utils 
+        │   └── DataBaseUtil.java 数据库CRUD的工具类
+        │   └── EncryptionUtil.java.java 加解密工具类
+        ├── CheckAuthProto.java 
+        ├── CheckAuthReply.java 返回实体
+        ├── CheckAuthReplyOrBuilder.java Builder接口
+        ├── CheckAuthRequest.java 请求实体
+        ├── CheckAuthRequestOrBuilder.java Builder接口
+        ├── LoginProto.java
+        ├── LoginReply.java 返回实体
+        ├── LoginReplyOrBuilder.java
+        ├── LoginRequest.java 请求实体
+        ├── LoginRequestOrBuilder.java Builder接口
+        ├── RegisterProto.java 
+        ├── RegisterReply.java 返回实体
+        ├── RegisterReplyOrBuilder.java Builder接口
+        ├── RegisterRequest.java 请求实体
+        └── RegisterRequestOrBuilder.java Builder接口
 ```
 
 
 ### 已知问题
-1. 国内网络环境无法clone/submodule https://chromium.googlesource.com/external/gyp.git，使用vpn亦不行，可能dns server被墙
-2. 由于我C++不是很熟悉，djinni-client-app/src/client_impl.cpp 写得可能有些问题
-3. 尽量使用brew install，可以省去配置成本。
+- ~~（国内网络环境无法clone/submodule https://chromium.googlesource.com/external/gyp.git，    
+使用vpn亦不行，可能dns server被墙）~~ 已上传
+- make android 提示找不到grpcpp.h，但是include文件夹里有
+
 
 
 ![app](https://github.com/LarryLawrence/RegisterAndLogin-Grpc-Djinni/blob/master/client/screenshots/app-screen.png)

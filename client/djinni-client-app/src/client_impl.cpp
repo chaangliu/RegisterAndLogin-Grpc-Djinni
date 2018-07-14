@@ -25,26 +25,6 @@ using client::CheckAuthReply;
 using client::LoginReply;
 using client::RegisterReply;
 
-//---for reference only---
-//#include <iostream>
-//#include <memory>
-//#include <string>
-//
-//#include <grpcpp/grpcpp.h>
-//
-//#ifdef BAZEL_BUILD
-//#include "examples/protos/helloworld.grpc.pb.h"
-//#else
-//#include "helloworld.grpc.pb.h"
-//#endif
-//
-//using grpc::Channel;
-//using grpc::ClientContext;
-//using grpc::Status;
-//using helloworld::HelloRequest;
-//using helloworld::HelloReply;
-//using helloworld::Greeter;
-
 namespace client {
 
     std::string _path;
@@ -63,7 +43,6 @@ namespace client {
 //        _setup_db();
 //    }
     ClientImpl::ClientImpl(){}
-//    std::unique_ptr<Greeter::Stub> stub_;
     std::unique_ptr<Client::Stub> stub_(
             Client::NewStub(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials())));
 
@@ -95,15 +74,6 @@ namespace client {
         } else {
             std::cout << status.error_code() << ": " << status.error_message()
                       << std::endl;
-//            std::string resultmsg = "RPC 失败";
-//            int32_t resultcode = -1;
-//            bool isauthvalid = 0;
-//            reply = {
-//                    resultcode,
-//                    resultmsg,
-//                    isauthvalid,
-//                    ""
-//            };
             Reply reply = {
                     -1, "RPC 失败",
                     checkAuthReply.isvalid(), ""
@@ -131,14 +101,11 @@ namespace client {
                 true, registerReply.auth()
         };
         if (status.ok()) {
+            //todo auth最好直接在native lib中保存
             return reply;
         } else {
             std::cout << status.error_code() << ": " << status.error_message()
                       << std::endl;
-//            int32_t resultcode = -1;
-//            std::string resultmsg = "RPC 失败";
-//            bool isauthvalid = 0;
-//            std::string auth = "";
             return reply;
         }
     }
@@ -161,6 +128,7 @@ namespace client {
                 true, loginReply.auth()
         };
         if (status.ok()) {
+            //todo auth最好直接在native lib中保存
             return reply;
         } else {
             std::cout << status.error_code() << ": " << status.error_message()
@@ -173,7 +141,6 @@ namespace client {
     User ClientImpl::get_userinfo(const std::string &username) {
 
         User targetUser = {999, "", "", "", ""};
-
         // 获取所有records
         sql = "SELECT * FROM users";
         if (sqlite3_prepare_v2(db, sql.c_str(), sql.length() + 1, &statement, 0) == SQLITE_OK) {
@@ -220,7 +187,6 @@ namespace client {
     }
 
     void ClientImpl::_setup_db() {
-
         // 打开database，如果有需要就创建一个
         rc = sqlite3_open_v2(_path.c_str(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
         if (rc) {
@@ -256,7 +222,5 @@ namespace client {
 
         }
         sqlite3_finalize(statement);
-
     }
-
 }

@@ -4,6 +4,14 @@ import java.sql.*;
 
 /**
  * 数据库相关操作工具类
+ *
+ * @author liuchang
+ * mysql> show tables;
+ * +----------------+
+ * | Tables_in_grpc |
+ * +----------------+
+ * | user_table     |
+ * +----------------+
  */
 public class DataBaseUtil {
     private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
@@ -56,14 +64,20 @@ public class DataBaseUtil {
      * @param deviceId 设备id
      * @param auth     auth
      */
-    public static void addEntry(String userName, String password, String deviceid, String auth) {
+    public static void addEntry(String userName, String password, String deviceId, String auth) {
+        //密码加密
+        try {
+            password = EncryptionUtil.generateEncryptedPassword(password, EncryptionUtil.generateSalt(password));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Connection connection = null;
         try {
             Class.forName(DRIVER_NAME);
             connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
             String insertSql = "INSERT INTO user_table" +
                     "    (username, password, deviceid, auth)" +
-                    "    VALUES" + "(" + userName + "," + password + "," + deviceid + ", " + auth + ")";
+                    "    VALUES" + "(" + userName + "," + password + "," + deviceId + ", " + auth + ")";
             PreparedStatement preparedStatement = connection.prepareStatement(insertSql);
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -116,5 +130,38 @@ public class DataBaseUtil {
             }
         }
         return result;
+    }
+
+    /**
+     * 更新制定用户名的auth
+     * @param userName 用户名
+     * @param newAuth 新auth
+     * @return 是否更新成功
+     */
+    public static boolean updateAuth(String userName, String newAuth) {
+        Connection connection = null;
+        try {
+            Class.forName(DRIVER_NAME);
+            connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            String sql = "UPDATE user_table" +
+                    "SET auth=" + newAuth +
+                    "WHERE username=" + userName + ";";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
     }
 }

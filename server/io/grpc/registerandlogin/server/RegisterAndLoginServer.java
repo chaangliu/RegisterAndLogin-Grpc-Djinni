@@ -21,6 +21,7 @@ import io.grpc.ServerBuilder;
 import io.grpc.registerandlogin.*;
 import io.grpc.registerandlogin.grpc.CheckAuthGrpc;
 import io.grpc.registerandlogin.utils.DataBaseUtil;
+import io.grpc.registerandlogin.utils.EncryptionUtil;
 import io.grpc.stub.StreamObserver;
 import sun.misc.BASE64Encoder;
 
@@ -28,6 +29,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.logging.Logger;
 
 import static io.grpc.registerandlogin.utils.DataBaseUtil.*;
@@ -95,18 +97,21 @@ public class RegisterAndLoginServer {
             String userPwd = req.getUserPwd();
             String deviceId = req.getDeviceId();
             String queriedUserName = DataBaseUtil.query(userName, COLUMN_USER_NAME);
-            RegisterReply reply = null;
+            RegisterReply reply;
             if (queriedUserName != null) {
                 //userName已存在
-                RegisterReply.newBuilder().setResultCode(RESULT_FAILURE).setResultMsg("用户名已经存在，请换一个用户名").build();
+                reply = RegisterReply.newBuilder().setResultCode(RESULT_FAILURE).setResultMsg("用户名已经存在，请换一个用户名").build();
 
             } else if (!userPwd.matches("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$")) {
-                //用户名密码不匹配
-                RegisterReply.newBuilder().setResultCode(RESULT_FAILURE).setResultMsg("密码不不符合规则").build();
+                //密码不符合规则
+                reply = RegisterReply.newBuilder().setResultCode(RESULT_FAILURE).setResultMsg("密码不符合规则").build();
 
             } else {
-                //用户名密码匹配，deviceId不同，更新auth
-                RegisterReply.newBuilder().setResultCode(RESULT_SUCCESS).setAuth(generateAuth(userName, deviceId)).setResultMsg("注册成功").build();
+                //注册成功
+                String auth = generateAuth(userName, deviceId);
+                reply = RegisterReply.newBuilder().setResultCode(RESULT_SUCCESS).setAuth(auth).setResultMsg("注册成功").build();
+                //addEntry中对密码做加密处理
+                DataBaseUtil.addEntry(userName, userPwd, deviceId, auth);
             }
             //回调结果
             responseObserver.onNext(reply);
@@ -154,21 +159,27 @@ public class RegisterAndLoginServer {
             String userPwd = req.getUserPwd();
             String deviceId = req.getDeviceId();
             String queriedUserName = DataBaseUtil.query(userName, COLUMN_PASSWORD);
-            //String queriedDeviceId = DataBaseUtil.query(userName, COLUMN_DEVICE_ID);
             String queriedPwd = DataBaseUtil.query(userName, COLUMN_PASSWORD);
-            LoginReply reply;
+            LoginReply reply = null;
 
             if (queriedUserName == null || queriedUserName.length() == 0) {
-                //userName不存在
+                //用户名不存在
                 reply = LoginReply.newBuilder().setResultCode(RESULT_FAILURE).setResultMsg("用户名不存在").build();
-
-            } else if (!userPwd.equals(queriedPwd)) {
-                //用户名密码不匹配
-                reply = LoginReply.newBuilder().setResultCode(RESULT_FAILURE).setResultMsg("用户名与密码不匹配").build();
-
             } else {
-                //用户名密码匹配，deviceId不同，更新auth
-                reply = LoginReply.newBuilder().setResultCode(RESULT_SUCCESS).setAuth(generateAuth(userName, deviceId)).setResultMsg("注册成功").build();
+                try {
+                    if (!EncryptionUtil.authenticate(userPwd, queriedPwd, EncryptionUtil.generateSalt(userPwd))) {
+                        //用户名密码不匹配
+                        reply = LoginReply.newBuilder().setResultCode(RESULT_FAILURE).setResultMsg("用户名与密码不匹配").build();
+                    } else {
+                        //用户名密码匹配
+                        String newAuth = generateAuth(userName, deviceId);
+                        reply = LoginReply.newBuilder().setResultCode(RESULT_SUCCESS).setAuth(newAuth).setResultMsg("登录成功").build();
+                        //更新数据库中的auth
+                        DataBaseUtil.updateAuth(userName, newAuth);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             //回调结果
             responseObserver.onNext(reply);
@@ -184,7 +195,7 @@ public class RegisterAndLoginServer {
      * @return auth
      */
     private static String generateAuth(String userName, String deviceId) {
-        return encoderByMd5(userName + deviceId + System.currentTimeMillis());
+        return encoderByMd5(userName + deviceId);
     }
 
     private static String encoderByMd5(String str) {
