@@ -6,6 +6,7 @@ package com.mycompany.client;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class ClientInterface {
+    /**    static create_with_path(path: string): client_interface; */
     public abstract User getUserinfo(String username);
 
     public abstract Reply registerAccount(String username, String password, String deviceid);
@@ -13,8 +14,6 @@ public abstract class ClientInterface {
     public abstract Reply checkAuth(String username, String auth);
 
     public abstract Reply login(String username, String password, String deviceid);
-
-    public static native ClientInterface createWithPath(String path);
 
     private static final class CppProxy extends ClientInterface
     {

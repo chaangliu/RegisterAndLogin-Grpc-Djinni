@@ -14,7 +14,7 @@ namespace client {
     public:
         // Constructor
 //        ClientImpl(const std::string &path, std::string &deviceid);
-
+        ClientImpl();
         // Database functions we need to implement in C++
 //        std::vector<Todo> get_todos();
 //        int32_t add_todo(const std::string & label);
@@ -26,18 +26,19 @@ namespace client {
 //        register(username: string, password: string, deviceid: string): reply;
 //        check_auth(username: string, auth: string): reply;
 //        login(username: string, password: string, deviceid: string): reply;
-        User get_userinfo(const std::string & username);
-        Reply check_auth(std::string & username, std:: string & auth);
-        Reply register_account(std::string & username, std:: string & password, std:: string & deviceid);
-        Reply login(std::string & username, std:: string & password, std:: string & deviceid);
+        User get_userinfo(const std::string &username);
+
+        Reply check_auth(const std::string &username, const std::string &auth);
+
+        Reply register_account(const std::string &username, const std::string &password, const std::string &deviceid);
+
+        Reply login(const std::string &username, const std::string &password, const std::string &deviceid);
 
 
     private:
-
         void _setup_db();
 
         void _handle_query(std::string query);
-
     };
 
 }

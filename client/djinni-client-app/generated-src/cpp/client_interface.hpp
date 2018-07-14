@@ -3,7 +3,6 @@
 
 #pragma once
 
-#include <memory>
 #include <string>
 
 namespace client {
@@ -15,8 +14,7 @@ class ClientInterface {
 public:
     virtual ~ClientInterface() {}
 
-    static std::shared_ptr<ClientInterface> create_with_path(const std::string & path);
-
+    /**    static create_with_path(path: string): client_interface; */
     virtual User get_userinfo(const std::string & username) = 0;
 
     virtual Reply register_account(const std::string & username, const std::string & password, const std::string & deviceid) = 0;

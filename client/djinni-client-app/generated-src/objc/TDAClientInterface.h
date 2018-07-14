@@ -4,13 +4,11 @@
 #import "TDAReply.h"
 #import "TDAUser.h"
 #import <Foundation/Foundation.h>
-@class TDAClientInterface;
 
 
 @interface TDAClientInterface : NSObject
 
-+ (nullable TDAClientInterface *)createWithPath:(nonnull NSString *)path;
-
+/**    static create_with_path(path: string): client_interface; */
 - (nonnull TDAUser *)getUserinfo:(nonnull NSString *)username;
 
 - (nonnull TDAReply *)registerAccount:(nonnull NSString *)username

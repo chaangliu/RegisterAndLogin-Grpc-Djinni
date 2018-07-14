@@ -21,15 +21,6 @@ CJNIEXPORT void JNICALL Java_com_mycompany_client_ClientInterface_00024CppProxy_
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
 }
 
-CJNIEXPORT jobject JNICALL Java_com_mycompany_client_ClientInterface_createWithPath(JNIEnv* jniEnv, jobject /*this*/, jstring j_path)
-{
-    try {
-        DJINNI_FUNCTION_PROLOGUE0(jniEnv);
-        auto r = ::client::ClientInterface::create_with_path(::djinni::String::toCpp(jniEnv, j_path));
-        return ::djinni::release(::djinni_generated::NativeClientInterface::fromCpp(jniEnv, r));
-    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
-}
-
 CJNIEXPORT jobject JNICALL Java_com_mycompany_client_ClientInterface_00024CppProxy_native_1getUserinfo(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jstring j_username)
 {
     try {

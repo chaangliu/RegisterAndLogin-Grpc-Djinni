@@ -32,13 +32,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     return self;
 }
 
-+ (nullable TDAClientInterface *)createWithPath:(nonnull NSString *)path {
-    try {
-        auto objcpp_result_ = ::client::ClientInterface::create_with_path(::djinni::String::toCpp(path));
-        return ::djinni_generated::ClientInterface::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
 - (nonnull TDAUser *)getUserinfo:(nonnull NSString *)username {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->get_userinfo(::djinni::String::toCpp(username));
