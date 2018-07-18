@@ -44,6 +44,8 @@ public class RegisterAndLoginServer {
         int port = 50051;
         server = ServerBuilder.forPort(port)
                 .addService(new RegisterImpl())
+                .addService(new LoginImpl())
+                .addService(new CheckAuthImpl())
                 .build()
                 .start();
         logger.info("Server started, listening on " + port);

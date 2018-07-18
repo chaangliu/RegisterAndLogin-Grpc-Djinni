@@ -1,3 +1,9 @@
 [submodule "client/deps/djinni"]
 	path = client/deps/djinni
 	url = https://github.com/dropbox/djinni.git
+[submodule "client/djinni-client-app/deps/protobuf/protobuf"]
+	path = client/djinni-client-app/deps/protobuf/protobuf
+	url = https://github.com/google/protobuf.git
+[submodule "client/djinni-client-app/deps/grpc"]
+	path = client/djinni-client-app/deps/grpc
+	url = https://github.com/grpc/grpc.git
