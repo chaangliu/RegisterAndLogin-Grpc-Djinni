@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app
+CMAKE_SOURCE_DIR = /Users/huangshan/Desktop/testfolder/720/homework/client/djinni-client-app
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/huangshan/Desktop/testfolder/720/homework/client/djinni-client-app/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/huangshan/Desktop/testfolder/720/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles /Users/huangshan/Desktop/testfolder/720/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/huangshan/Desktop/testfolder/720/homework/client/djinni-client-app/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -11274,60 +11274,6 @@ generated-src/jni/NativeUser.cpp.s:
 	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.s
 .PHONY : generated-src/jni/NativeUser.cpp.s
 
-src/client.grpc.pb.o: src/client.grpc.pb.cc.o
-
-.PHONY : src/client.grpc.pb.o
-
-# target to build an object file
-src/client.grpc.pb.cc.o:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o
-.PHONY : src/client.grpc.pb.cc.o
-
-src/client.grpc.pb.i: src/client.grpc.pb.cc.i
-
-.PHONY : src/client.grpc.pb.i
-
-# target to preprocess a source file
-src/client.grpc.pb.cc.i:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.i
-.PHONY : src/client.grpc.pb.cc.i
-
-src/client.grpc.pb.s: src/client.grpc.pb.cc.s
-
-.PHONY : src/client.grpc.pb.s
-
-# target to generate assembly for a file
-src/client.grpc.pb.cc.s:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.s
-.PHONY : src/client.grpc.pb.cc.s
-
-src/client.pb.o: src/client.pb.cc.o
-
-.PHONY : src/client.pb.o
-
-# target to build an object file
-src/client.pb.cc.o:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o
-.PHONY : src/client.pb.cc.o
-
-src/client.pb.i: src/client.pb.cc.i
-
-.PHONY : src/client.pb.i
-
-# target to preprocess a source file
-src/client.pb.cc.i:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/client.pb.cc.i
-.PHONY : src/client.pb.cc.i
-
-src/client.pb.s: src/client.pb.cc.s
-
-.PHONY : src/client.pb.s
-
-# target to generate assembly for a file
-src/client.pb.cc.s:
-	$(MAKE) -f CMakeFiles/djinni_client_app.dir/build.make CMakeFiles/djinni_client_app.dir/src/client.pb.cc.s
-.PHONY : src/client.pb.cc.s
-
 src/client_impl.o: src/client_impl.cpp.o
 
 .PHONY : src/client_impl.o
@@ -12603,12 +12549,6 @@ help:
 	@echo "... generated-src/jni/NativeUser.o"
 	@echo "... generated-src/jni/NativeUser.i"
 	@echo "... generated-src/jni/NativeUser.s"
-	@echo "... src/client.grpc.pb.o"
-	@echo "... src/client.grpc.pb.i"
-	@echo "... src/client.grpc.pb.s"
-	@echo "... src/client.pb.o"
-	@echo "... src/client.pb.i"
-	@echo "... src/client.pb.s"
 	@echo "... src/client_impl.o"
 	@echo "... src/client_impl.i"
 	@echo "... src/client_impl.s"

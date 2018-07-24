@@ -4,6 +4,8 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "../generated-src/cpp/reply.hpp"
+#include "../generated-src/cpp/user.hpp"
 #include "../generated-src/cpp/client_interface.hpp"
 
 

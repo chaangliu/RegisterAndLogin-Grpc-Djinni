@@ -7,7 +7,6 @@
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
 #import "TDAReply+Private.h"
-#import "TDAUser+Private.h"
 #include <exception>
 #include <stdexcept>
 #include <utility>
@@ -30,13 +29,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
         _cppRefHandle.assign(cppRef);
     }
     return self;
-}
-
-- (nonnull TDAUser *)getUserinfo:(nonnull NSString *)username {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->get_userinfo(::djinni::String::toCpp(username));
-        return ::djinni_generated::User::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
 - (nonnull TDAReply *)registerAccount:(nonnull NSString *)username

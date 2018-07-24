@@ -8,6 +8,9 @@ GYP_HOST_VAR_PREFIX ?=
 GYP_HOST_MULTILIB ?=
 
 include $(LOCAL_PATH)/deps/djinni/support-lib/djinni_jni.target.mk
+include $(LOCAL_PATH)/deps/grpc/gpr.target.mk
+include $(LOCAL_PATH)/deps/grpc/grpc++.target.mk
+include $(LOCAL_PATH)/deps/grpc/grpc.target.mk
 include $(LOCAL_PATH)/deps/sqlite3.target.mk
 include $(LOCAL_PATH)/libclientapp_jni.target.mk
 

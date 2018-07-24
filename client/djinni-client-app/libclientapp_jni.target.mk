@@ -13,7 +13,10 @@ gyp_shared_intermediate_dir := $(call intermediates-dir-for,GYP,shared,,,$(GYP_V
 # Make sure our deps are built first.
 GYP_TARGET_DEPENDENCIES := \
 	$(call intermediates-dir-for,STATIC_LIBRARIES,djinni_jni,,,$(GYP_VAR_PREFIX))/djinni_jni.a \
-	$(call intermediates-dir-for,STATIC_LIBRARIES,sqlite3,,,$(GYP_VAR_PREFIX))/sqlite3.a
+	$(call intermediates-dir-for,STATIC_LIBRARIES,sqlite3,,,$(GYP_VAR_PREFIX))/sqlite3.a \
+	$(call intermediates-dir-for,STATIC_LIBRARIES,grpc++,,,$(GYP_VAR_PREFIX))/grpc++.a \
+	$(call intermediates-dir-for,STATIC_LIBRARIES,grpc,,,$(GYP_VAR_PREFIX))/grpc.a \
+	$(call intermediates-dir-for,STATIC_LIBRARIES,gpr,,,$(GYP_VAR_PREFIX))/gpr.a
 
 GYP_GENERATED_OUTPUTS :=
 
@@ -52,6 +55,7 @@ LOCAL_C_INCLUDES_Debug := \
 	$(LOCAL_PATH)/generated-src/jni \
 	$(LOCAL_PATH)/generated-src/cpp \
 	$(LOCAL_PATH)/src \
+	$(LOCAL_PATH)/generated-src \
 	$(LOCAL_PATH)/deps \
 	$(LOCAL_PATH)/deps/sqlite3 \
 	$(LOCAL_PATH)/deps/djinni/support-lib/jni
@@ -87,6 +91,7 @@ LOCAL_C_INCLUDES_Release := \
 	$(LOCAL_PATH)/generated-src/jni \
 	$(LOCAL_PATH)/generated-src/cpp \
 	$(LOCAL_PATH)/src \
+	$(LOCAL_PATH)/generated-src \
 	$(LOCAL_PATH)/deps \
 	$(LOCAL_PATH)/deps/sqlite3 \
 	$(LOCAL_PATH)/deps/djinni/support-lib/jni
@@ -121,7 +126,10 @@ LOCAL_LDFLAGS := $(LOCAL_LDFLAGS_$(GYP_CONFIGURATION)) $(LOCAL_GYP_LIBS)
 
 LOCAL_STATIC_LIBRARIES := \
 	djinni_jni \
-	sqlite3
+	sqlite3 \
+	grpc++ \
+	grpc \
+	gpr
 
 # Enable grouping to fix circular references
 LOCAL_GROUP_STATIC_LIBRARIES := true

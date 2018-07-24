@@ -412,8 +412,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeClientInterface.cpp.o"
   "CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeReply.cpp.o"
   "CMakeFiles/djinni_client_app.dir/generated-src/jni/NativeUser.cpp.o"
-  "CMakeFiles/djinni_client_app.dir/src/client.grpc.pb.cc.o"
-  "CMakeFiles/djinni_client_app.dir/src/client.pb.cc.o"
   "CMakeFiles/djinni_client_app.dir/src/client_impl.cpp.o"
   "djinni_client_app.pdb"
   "djinni_client_app"

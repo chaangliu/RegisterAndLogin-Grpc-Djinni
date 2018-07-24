@@ -5,10 +5,12 @@
 #include <grpcpp/grpcpp.h>
 
 #ifdef BAZEL_BUILD
-#include "client/djinni-client-app/src/grpc/client.grpc.pb.h"
+//#include "../deps/grpc/client.grpc.pb.h"
 #else
 
-#include "client.grpc.pb.h"
+#include "check_auth.grpc.pb.h"
+#include "login.grpc.pb.h"
+#include "register.grpc.pb.h"
 #include "client_impl.hpp"
 #include "../generated-src/cpp/reply.hpp"
 #include "../generated-src/cpp/user.hpp"
@@ -18,12 +20,15 @@
 using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
-using client::CheckAuthRequest;
-using client::LoginRequest;
-using client::RegisterRequest;
-using client::CheckAuthReply;
-using client::LoginReply;
-using client::RegisterReply;
+using RegisterAndLogin::CheckAuthRequest;
+using RegisterAndLogin::LoginRequest;
+using RegisterAndLogin::RegisterRequest;
+using RegisterAndLogin::CheckAuthReply;
+using RegisterAndLogin::LoginReply;
+using RegisterAndLogin::RegisterReply;
+using RegisterAndLogin::Login;
+using RegisterAndLogin::Register;
+using RegisterAndLogin::CheckAuth;
 
 namespace client {
 
@@ -37,8 +42,9 @@ namespace client {
     ClientImpl::ClientImpl(){}
 
     //TODO 使用安全通信
-    std::unique_ptr<Client::Stub> stub_(
-            Client::NewStub(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials())));
+    std::unique_ptr<CheckAuth::Stub> auth_stub_(CheckAuth::NewStub(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials())));
+    std::unique_ptr<Login::Stub> login_stub_(Login::NewStub(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials())));
+    std::unique_ptr<Register::Stub> reg_stub_(Register::NewStub(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials())));
 
     //验证auth接口，进入App后登录之前先调用auth验证，判断是否需要重新登录(比如被挤掉或过期)
     Reply ClientImpl::check_auth(const std::string &username, const std::string &auth) {
@@ -47,16 +53,12 @@ namespace client {
         CheckAuthRequest request;
         request.set_username(username);
         request.set_auth(auth);
-
         //server返回的reply
         CheckAuthReply checkAuthReply;
-
         //给client的context，可以用来传递额外信息给server或者调整特定的RPC行为
         ClientContext context;
-
         // RPC过程
-        Status status = stub_->CheckAuth(&context, request, &checkAuthReply);
-
+        Status status = auth_stub_->CheckAuth(&context, request, &checkAuthReply);
         // 对status的判断
         if (status.ok()) {
             //把server传回的reply转换成传给app的reply
@@ -82,14 +84,10 @@ namespace client {
         request.set_username(userName);
         request.set_userpwd(userPwd);
         request.set_deviceid(deviceId);
-
         RegisterReply registerReply;
-
         ClientContext context;
-
         // RPC请求
-        Status status = stub_->Register(&context, request, &registerReply);
-
+        Status status = reg_stub_->Register(&context, request, &registerReply);
         Reply reply = {
                 registerReply.resultcode(), registerReply.resultmsg(),
                 true, registerReply.auth()
@@ -110,13 +108,10 @@ namespace client {
         request.set_username(userName);
         request.set_userpwd(userPwd);
         request.set_deviceid(deviceId);
-
         LoginReply loginReply;
-
         ClientContext context;
         // RPC请求
-        Status status = stub_->Login(&context, request, &loginReply);
-
+        Status status = login_stub_->Login(&context, request, &loginReply);
         Reply reply = {
                 loginReply.resultcode(), loginReply.resultmsg(),
                 true, loginReply.auth()
@@ -133,40 +128,38 @@ namespace client {
 
     //获取用户信息，返回User实体
     User ClientImpl::get_userinfo(const std::string &username) {
-
-        User targetUser = {999, "", "", "", ""};
-        // 获取所有records
-        sql = "SELECT * FROM users";
-        if (sqlite3_prepare_v2(db, sql.c_str(), sql.length() + 1, &statement, 0) == SQLITE_OK) {
-            int result = 0;
-            while (true) {
-                result = sqlite3_step(statement);
-                if (result == SQLITE_ROW) {
-
-                    int32_t id = sqlite3_column_int(statement, 0);
-                    std::string username = (char *) sqlite3_column_text(statement, 1);
-                    std::string password = (char *) sqlite3_column_text(statement, 2);
-                    std::string auth = (char *) sqlite3_column_text(statement, 3);
-                    std::string deviceid = (char *) sqlite3_column_text(statement, 4);
-                    targetUser = {
-                            id,
-                            username,
-                            password,
-                            auth,
-                            deviceid
-                    };
-                } else {
-                    break;
-                }
-            }
-            sqlite3_finalize(statement);
-
-        } else {
-            auto error = sqlite3_errmsg(db);
-            if (error != nullptr) printf("Error: %s", error);
-            else printf("Unknown Error");
-        }
-
+        User targetUser = {999, username, "", "", ""};
+//        // 获取所有records
+//        sql = "SELECT * FROM users";
+//        if (sqlite3_prepare_v2(db, sql.c_str(), sql.length() + 1, &statement, 0) == SQLITE_OK) {
+//            int result = 0;
+//            while (true) {
+//                result = sqlite3_step(statement);
+//                if (result == SQLITE_ROW) {
+//
+//                    int32_t id = sqlite3_column_int(statement, 0);
+//                    std::string username = (char *) sqlite3_column_text(statement, 1);
+//                    std::string password = (char *) sqlite3_column_text(statement, 2);
+//                    std::string auth = (char *) sqlite3_column_text(statement, 3);
+//                    std::string deviceid = (char *) sqlite3_column_text(statement, 4);
+//                    targetUser = {
+//                            id,
+//                            username,
+//                            password,
+//                            auth,
+//                            deviceid
+//                    };
+//                } else {
+//                    break;
+//                }
+//            }
+//            sqlite3_finalize(statement);
+//
+//        } else {
+//            auto error = sqlite3_errmsg(db);
+//            if (error != nullptr) printf("Error: %s", error);
+//            else printf("Unknown Error");
+//        }
         return targetUser;
     }
 

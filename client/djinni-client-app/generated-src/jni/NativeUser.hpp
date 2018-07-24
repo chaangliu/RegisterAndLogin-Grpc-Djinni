@@ -24,7 +24,7 @@ private:
     NativeUser();
     friend ::djinni::JniClass<NativeUser>;
 
-    const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/mycompany/client/User") };
+    const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/chang/client/User") };
     const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V") };
     const jfieldID field_mId { ::djinni::jniGetFieldID(clazz.get(), "mId", "I") };
     const jfieldID field_mUsername { ::djinni::jniGetFieldID(clazz.get(), "mUsername", "Ljava/lang/String;") };

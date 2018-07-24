@@ -717,10 +717,6 @@ set(SOURCE_FILES
         generated-src/objc/TDAReply.h
         generated-src/objc/TDAUser+Private.h
         generated-src/objc/TDAUser.h
-        src/client.grpc.pb.cc
-        src/client.grpc.pb.h
-        src/client.pb.cc
-        src/client.pb.h
         src/client_impl.cpp
         src/client_impl.hpp)
 

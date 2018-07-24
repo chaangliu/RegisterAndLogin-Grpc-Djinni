@@ -3,7 +3,7 @@
 CMake Error at CMakeLists.txt:409 (add_executable):
   Cannot find source file:
 
-    client/djinni-client-app/src/grpc/client.grpc.pb.cc
+    client/djinni-client-app/generated-src/jni/NativeClient.cpp
 
   Tried extensions .c .C .c++ .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp
   .hxx .in .txx

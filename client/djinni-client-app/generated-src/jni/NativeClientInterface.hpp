@@ -27,6 +27,24 @@ private:
     friend ::djinni::JniClass<NativeClientInterface>;
     friend ::djinni::JniInterface<::client::ClientInterface, NativeClientInterface>;
 
+    class JavaProxy final : ::djinni::JavaProxyHandle<JavaProxy>, public ::client::ClientInterface
+    {
+    public:
+        JavaProxy(JniType j);
+        ~JavaProxy();
+
+        ::client::Reply register_account(const std::string & username, const std::string & password, const std::string & deviceid) override;
+        ::client::Reply check_auth(const std::string & username, const std::string & auth) override;
+        ::client::Reply login(const std::string & username, const std::string & password, const std::string & deviceid) override;
+
+    private:
+        friend ::djinni::JniInterface<::client::ClientInterface, ::djinni_generated::NativeClientInterface>;
+    };
+
+    const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/chang/client/ClientInterface") };
+    const jmethodID method_registerAccount { ::djinni::jniGetMethodID(clazz.get(), "registerAccount", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/chang/client/Reply;") };
+    const jmethodID method_checkAuth { ::djinni::jniGetMethodID(clazz.get(), "checkAuth", "(Ljava/lang/String;Ljava/lang/String;)Lcom/chang/client/Reply;") };
+    const jmethodID method_login { ::djinni::jniGetMethodID(clazz.get(), "login", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/chang/client/Reply;") };
 };
 
 }  // namespace djinni_generated

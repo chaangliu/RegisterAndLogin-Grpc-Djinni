@@ -24,7 +24,7 @@ private:
     NativeReply();
     friend ::djinni::JniClass<NativeReply>;
 
-    const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/mycompany/client/Reply") };
+    const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/chang/client/Reply") };
     const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(ILjava/lang/String;ZLjava/lang/String;)V") };
     const jfieldID field_mResultcode { ::djinni::jniGetFieldID(clazz.get(), "mResultcode", "I") };
     const jfieldID field_mResultmsg { ::djinni::jniGetFieldID(clazz.get(), "mResultmsg", "Ljava/lang/String;") };

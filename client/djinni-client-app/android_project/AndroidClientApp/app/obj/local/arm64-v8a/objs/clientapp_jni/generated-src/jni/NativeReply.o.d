@@ -1,4 +1,4 @@
-/Users/huangshan/Documents/workspace/GRPC/example/grpc/grpc-java/examples/homework/client/djinni-client-app/android_project/AndroidClientApp/app//obj/local/arm64-v8a/objs/clientapp_jni/generated-src/jni/NativeReply.o: \
+/Users/huangshan/Desktop/testfolder/720/homework/client/djinni-client-app/android_project/AndroidClientApp/app//obj/local/arm64-v8a/objs/clientapp_jni/generated-src/jni/NativeReply.o: \
  ../../../generated-src/jni/NativeReply.cpp \
  ../../../generated-src/jni/NativeReply.hpp \
  ../../../deps/djinni/support-lib/jni/djinni_support.hpp \

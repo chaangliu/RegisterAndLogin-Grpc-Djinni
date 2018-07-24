@@ -8,15 +8,15 @@
 namespace client {
 
 struct Reply;
-struct User;
 
 class ClientInterface {
 public:
     virtual ~ClientInterface() {}
 
-    /**    static create_with_path(path: string): client_interface; */
-    virtual User get_userinfo(const std::string & username) = 0;
-
+    /**
+     *    static create_with_path(path: string): client_interface;
+     *    get_userinfo(username: string): user;
+     */
     virtual Reply register_account(const std::string & username, const std::string & password, const std::string & deviceid) = 0;
 
     virtual Reply check_auth(const std::string & username, const std::string & auth) = 0;
